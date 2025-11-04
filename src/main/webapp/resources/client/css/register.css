@@ -1,114 +1,173 @@
-/* register.css - centered form and theme for registration page */
-/* Layout: center the card vertically and horizontally */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
-.page-wrapper {
-	min-height: 100vh;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: 0 20px; /* let gradient fill vertically */
-	background: linear-gradient(-135deg, #c850c0, #4158d0);
-	background-size: 300% 300%;
-	animation: gradientBG 15s ease infinite;
+/* Importing Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.wrapper {
-	width: 100%;
-	/* wider container so inputs appear longer on desktop */
-	max-width: 1200px;
-	margin: 0 auto;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-/* Some templates add a `.wrapper--w680` helper class. override it so our layout stays wide */
-.wrapper.wrapper--w680,
-.wrapper--w680 {
-	max-width: 1200px !important;
+.container {
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* make sure the card uses full width of the wrapper so inputs can expand */
-.wrapper .card {
-	width: 100%;
+.container .title {
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
 }
 
-.card {
-	background: #fff;
-	border-radius: 10px;
-	box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+.container .title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
-.card-4 .card-body {
-	padding: 40px 36px; /* reduce padding so inputs have more room */
+.content form .user-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
 }
 
-.title {
-	text-transform: uppercase;
-	margin-bottom: 28px;
-	font-weight: 600;
-	color: #333;
-	text-align: center;
+form .user-details .input-box {
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
 }
 
-/* Form grid: two columns per row, aligned and balanced */
-.row {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 24px; /* vertical gap between rows */
-	margin: 0 0 20px 0;
-	align-items: stretch; /* make columns equal height when needed */
+form .input-box span.details {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
 
-/* row-space adds horizontal gap between columns */
-.row-space {
-	gap: 32px; /* wider horizontal gap between inputs in the same row */
-	margin-bottom: 0;
-	justify-content: space-between;
-}
-.row-space { justify-content: space-between; }
-.col-2 {
-	flex: 1 1 calc(50% - 16px);
-	max-width: calc(50% - 16px);
-	margin: 0;
-	display: flex;
-	flex-direction: column; /* ensure label+input stack consistently */
-	min-width: 280px; /* ensure inputs don't get too narrow */
-}
-.col-12 {
-	flex: 1 1 100%;
-	max-width: 100%;
-	margin: 0;
+.user-details .input-box input {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
 }
 
-.label { display:block; margin-bottom:8px; font-size:14px; color:#555; }
-.input-group { margin-bottom:18px; display:flex; flex-direction:column; }
-
-.input--style-4 {
-	width: 100%;
-	min-height: 64px; /* taller inputs for better touch targets */
-	padding: 14px 20px;
-	border-radius: 8px;
-	border: 1px solid #e6e6e6;
-	font-size: 16px;
-	color: #444;
-	transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
-}
-.input--style-4:focus{ outline:none; border-color:#4158d0; box-shadow:0 6px 18px rgba(65,88,208,0.08); }
-
-.form-control { width:100%; padding:.5rem .75rem; border-radius:6px; border:1px solid #e6e6e6; }
-.form-label{ display:block; margin-bottom:.5rem; }
-
-.btn { display:inline-block; padding:0 36px; height:44px; line-height:44px; border-radius:8px; cursor:pointer; border:none; color:#fff; font-weight:600; }
-.btn--green { background: linear-gradient(90deg,#4158d0 0%,#c850c0 100%); transition:transform .18s ease, box-shadow .18s ease; }
-.btn--green:hover{ transform:translateY(-3px); box-shadow:0 8px 24px rgba(200,80,192,0.12); }
-
-.p-t-15{ padding-top:15px; text-align:center }
-
-/* small screens */
-@media (max-width: 767px) {
-	.col-2 { flex: 1 1 100%; max-width: 100%; }
-	.card-4 .card-body { padding: 28px 20px; }
+.user-details .input-box input:focus,
+.user-details .input-box input:valid {
+  border-color: #9b59b6;
 }
 
-/* subtle background animation */
-@keyframes gradientBG { 0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%} }
+form .gender-details .gender-title {
+  font-size: 20px;
+  font-weight: 500;
+}
 
+form .category {
+  display: flex;
+  width: 80%;
+  margin: 14px 0;
+  justify-content: space-between;
+}
+
+form .category label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+form .category label .dot {
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#dot-1:checked~.category label .one,
+#dot-2:checked~.category label .two,
+#dot-3:checked~.category label .three {
+  background: #9b59b6;
+  border-color: #d9d9d9;
+}
+
+form input[type="radio"] {
+  display: none;
+}
+
+form .button {
+  height: 45px;
+  margin: 35px 0
+}
+
+form .button input {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+
+form .button input:hover {
+  background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+}
+
+/* Responsive media query code for mobile devices */
+@media(max-width: 584px) {
+  .container {
+    max-width: 100%;
+  }
+
+  form .user-details .input-box {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  form .category {
+    width: 100%;
+  }
+
+  .content form .user-details {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .user-details::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
+/* Responsive media query code for mobile devices */
+@media(max-width: 459px) {
+  .container .content .category {
+    flex-direction: column;
+  }
+}

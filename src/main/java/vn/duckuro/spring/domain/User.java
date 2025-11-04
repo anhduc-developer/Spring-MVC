@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import vn.duckuro.spring.service.validator.StrongPassword;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ import jakarta.persistence.Table;
 @Entity // bien 1 class thong thuong thanh 1 entity
 @Table(name = "users") // table nay viet bao nhieu thi no cung chi tuong ung voi mot cai ma thoi
 public class User {
+    public static final Object getConfirmPasssword = null;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,6 +29,7 @@ public class User {
     private String email;
     @NotNull
     @Size(min = 2, message = "Password phải có tối thiểu 2 ký tự")
+    @StrongPassword()
     private String password;
     @NotNull
     @Size(min = 3, message = "Họ và tên phải có tối thiểu 3 ký tự")

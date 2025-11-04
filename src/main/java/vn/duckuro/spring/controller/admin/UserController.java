@@ -78,14 +78,14 @@ public class UserController {
         return "/admin/user/show";
     }
 
-    @RequestMapping("/admin/user/update/{id}")
+    @GetMapping("/admin/user/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
         return "admin/user/update";
     }
 
-    @RequestMapping("admin/user/update")
+    @GetMapping("admin/user/update")
     public String getUpdateUser(Model model, @ModelAttribute("newUser") User user) {
         User currentUser = this.userService.getUserById(user.getId());
         if (currentUser != null) {

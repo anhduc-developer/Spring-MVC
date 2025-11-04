@@ -55,7 +55,6 @@
                       <img src="/images/product/${item.product.photo}" alt="${item.product.name}" style="width:70px; height:70px; object-fit:cover" class="me-3" />
                       <div>
                         <div class="fw-bold">${item.product.name}</div>
-                        <div class="text-muted" style="font-size:13px">${item.product.shortDesc}</div>
                       </div>
                     </td>
                     <td>
