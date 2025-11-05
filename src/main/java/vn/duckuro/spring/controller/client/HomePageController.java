@@ -19,6 +19,7 @@ import vn.duckuro.spring.service.UserService;
 import jakarta.validation.Valid;
 
 import vn.duckuro.spring.service.UploadService;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class HomePageController {
@@ -50,7 +51,7 @@ public class HomePageController {
     @GetMapping("/register")
     public String getRegesterUser(Model model) {
         model.addAttribute("registerUser", new RegisterDTO());
-        return "/client/auth/register";
+        return "client/auth/register";
     }
 
     @PostMapping(value = "/register")

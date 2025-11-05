@@ -41,7 +41,7 @@ public class ProductController {
         return "admin/product/create";
     }
 
-    @PostMapping("/admin/product/create")
+    @PostMapping("admin/product/create")
     public String postCreateProduct(@ModelAttribute("newProduct") @Valid Product product,
             BindingResult newProductbindingResult, @RequestParam("duckuroFile") MultipartFile file) {
         List<FieldError> errors = newProductbindingResult.getFieldErrors();
@@ -59,7 +59,7 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    @GetMapping("admin/product/update/{id}")
+    @GetMapping("/admin/product/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         Product currentProduct = this.productService.getProductById(id);
         System.out.println(currentProduct);
@@ -93,26 +93,26 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
-    @GetMapping("admin/product/delete/{id}")
+    @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProduct(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
         Product product = new Product();
         product.setId(id);
         model.addAttribute("newProduct", product);
-        return "/admin/product/delete";
+        return "admin/product/delete";
     }
 
-    @PostMapping("/admin/product/delete")
+    @PostMapping("admin/product/delete")
     public String getDeleteUser(Model model, @ModelAttribute("newProduct") Product product) {
         this.productService.handleDelteProduct(product.getId());
         return "redirect:/admin/product";
     }
 
-    @GetMapping("admin/product/detail/{id}")
+    @GetMapping("/admin/product/detail/{id}")
     public String getDetailProduct(Model model, @PathVariable long id) {
         Product product = this.productService.getProductById(id);
         model.addAttribute("id", id);
         model.addAttribute("product", product);
-        return "admin/product/detail";
+        return "/admin/product/detail";
     }
 }

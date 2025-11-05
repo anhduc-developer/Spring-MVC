@@ -200,6 +200,10 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
             ĐĂNG KÝ NGAY
           </button>
         </div>
+        <!-- Phần đăng nhập -->
+        <div class="login-redirect">
+          <p>Bạn đã có tài khoản? <a href="/login">Đăng nhập</a></p>
+        </div>
       </form:form>
     </div>
 

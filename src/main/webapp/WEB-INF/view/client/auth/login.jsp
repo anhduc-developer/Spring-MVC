@@ -1,140 +1,144 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
 taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://www.springframework.org/tags/form" prefix="form" %>
+prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
-    <title>Login V1</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="client/images/favicon.ico" />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="client/css/bootstrap.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/css-hamburgers/hamburgers.min.css"
-    />
-    <!--===============================================================================================-->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/select2/select2.min.css"
-    />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="client/css/util.css" />
-    <link rel="stylesheet" type="text/css" href="client/css/main.css" />
-    <style>
-      .wrap-input100 { margin-bottom: 5px !important; }
-      .container-login100-form-btn { margin-top: 8px !important; }
-      .text-center.p-t-12 { padding-top: 8px !important; }
-      .text-center.p-t-136 { padding-top: 40px !important; }
-      .login100-form-title { 
-        font-size: 30px !important;
-        font-weight: 600 !important;
-        padding-bottom: 35px !important;
-      }
-      .input100 {
-        padding: 0 0px 0 55px !important;
-      }
-      .symbol-input100 {
-        padding-left: 25px !important;
-      }
-    </style>
-    <!--===============================================================================================-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="<c:url value='/client/css/login.css' />" />
   </head>
+
   <body>
-    <div class="limiter">
-      <div class="container-login100">
-        <div class="wrap-login100">
-          <div class="login100-pic js-tilt" data-tilt>
-            <img src="client/img/img-01.jpg" alt="IMG" />
-          </div>
-
-          <form class="login100-form validate-form">
-            <span class="login100-form-title"> Đăng nhập thành viên </span>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Valid email is required: ex@abc.xyz"
-            >
-              <input
-                class="input100"
-                type="text"
-                name="email"
-                placeholder="Email"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-              </span>
-            </div>
-
-            <div
-              class="wrap-input100 validate-input"
-              data-validate="Password is required"
-            >
-              <input
-                class="input100"
-                type="password"
-                name="pass"
-                placeholder="Password"
-              />
-              <span class="focus-input100"></span>
-              <span class="symbol-input100">
-                <i class="fa fa-lock" aria-hidden="true"></i>
-              </span>
-            </div>
-
-            <div class="container-login100-form-btn">
-              <button class="login100-form-btn">Login</button>
-            </div>
-
-            <div class="text-center p-t-12">
-              <a class="txt2" href="#"> Quên mật khẩu? </a>
-            </div>
-            <div class="text-center p-t-40">
-              <h5 class="mb-2">Bạn chưa có tài khoản?</h5>
-              <a class="txt2" href="/register">
-                Đăng kí tài khoản
-                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
+    <!-- 🌳 Nền tự nhiên -->
+    <div class="nature-background">
+      <div class="floating-leaf leaf-1"></div>
+      <div class="floating-leaf leaf-2"></div>
+      <div class="floating-leaf leaf-3"></div>
+      <div class="floating-leaf leaf-4"></div>
     </div>
 
-    <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/tilt/tilt.jquery.min.js"></script>
-    <script>
-      $(".js-tilt").tilt({
-        scale: 1.1,
-      });
-    </script>
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <!-- 🌼 Khối đăng nhập -->
+    <div class="login-container">
+      <div class="wellness-card">
+        <div class="organic-border"></div>
+
+        <!-- 🪷 Tiêu đề -->
+        <div class="mindful-header">
+          <div class="zen-logo">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <circle
+                cx="28"
+                cy="28"
+                r="26"
+                stroke="currentColor"
+                stroke-width="2"
+                opacity="0.6"
+              />
+              <circle
+                cx="28"
+                cy="28"
+                r="18"
+                stroke="currentColor"
+                stroke-width="1.5"
+                opacity="0.8"
+              />
+              <circle
+                cx="28"
+                cy="28"
+                r="10"
+                fill="currentColor"
+                opacity="0.9"
+              />
+              <path
+                d="M28 18v20M18 28h20"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div class="zen-glow"></div>
+          </div>
+          <h1>ĐĂNG NHẬP TÀI KHOẢN</h1>
+        </div>
+
+        <!-- 🪴 Form đăng nhập -->
+        <form
+          action="/login"
+          method="post"
+        >
+          <!-- Email -->
+          <div class="organic-field">
+            <div class="field-nature"></div>
+            <input
+              type="email"
+              name="username"
+              placeholder="name@example.com"
+              required
+            />
+            <label for="email">Email</label>
+            <div class="growth-indicator">
+              <div class="leaf-sprout"></div>
+            </div>
+            <span class="gentle-error" id="emailError"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="organic-field">
+            <form method="post" action="/login">
+            <div class="field-nature"></div>
+            <input
+              type="password"
+              name="password"
+              placeholder="Mật khẩu"
+              required
+            />
+            <label for="password">Mật khẩu</label>
+            <!-- CSRF Token -->
+            <input
+              type="hidden"
+              name="${_csrf.parameterName}"
+              value="${_csrf.token}"
+            />
+            <span class="gentle-error" id="passwordError"></span>
+          </div>
+
+          <!-- Nút đăng nhập -->
+          <button type="submit" class="harmony-button">
+            <div class="button-earth"></div>
+            <span class="button-text">ĐĂNG NHẬP</span>
+            <div class="button-growth">
+              <div class="growing-circle circle-1"></div>
+              <div class="growing-circle circle-2"></div>
+              <div class="growing-circle circle-3"></div>
+            </div>
+            <div class="button-aura"></div>
+          </button>
+        </form>
+
+        <!-- 🌸 Đường phân chia -->
+        <div class="balance-divider">
+          <div class="divider-branch"></div>
+          <div class="divider-center">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 2L8 8h8l-4-6zM12 22l4-6H8l4 6zM2 12l6-4v8l-6-4zM22 12l-6 4V8l6 4z"
+                fill="currentColor"
+                opacity="0.6"
+              />
+            </svg>
+          </div>
+          <div class="divider-branch"></div>
+        </div>
+
+        <div class="nurture-signup">
+          <span>Bạn chưa có tài khoản?</span>
+          <a href="/register" class="growth-link"
+            >Đăng ký ngay</a
+          >
+        </div>
+    <script src="<c:url value='/client/js/login.js' />"></script>
   </body>
 </html>

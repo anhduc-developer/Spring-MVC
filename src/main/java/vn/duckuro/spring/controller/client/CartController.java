@@ -20,21 +20,21 @@ public class CartController {
         model.addAttribute("cart", cartService.getCart());
         return "client/cart/cart";
     }
-    
-    @PostMapping("/cart/add")
+
+    @PostMapping("cart/add")
     public String addToCart(@RequestParam("productId") Long productId) {
         cartService.addProduct(productId);
         return "redirect:/cart";
     }
-    
-    @PostMapping("/cart/update")
-    public String updateCart(@RequestParam("productId") Long productId, 
-                           @RequestParam("quantity") int quantity) {
+
+    @PostMapping("cart/update")
+    public String updateCart(@RequestParam("productId") Long productId,
+            @RequestParam("quantity") int quantity) {
         cartService.updateProduct(productId, quantity);
         return "redirect:/cart";
     }
-    
-    @PostMapping("/cart/remove")
+
+    @PostMapping("cart/remove")
     public String removeFromCart(@RequestParam("productId") Long productId) {
         cartService.removeProduct(productId);
         return "redirect:/cart";

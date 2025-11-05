@@ -48,10 +48,10 @@ public class UserController {
     @GetMapping(value = "admin/user/create")
     public String getCreateUser(Model model) {
         model.addAttribute("newUser", new User());
-        return "/admin/user/create";
+        return "admin/user/create";
     }
 
-    @PostMapping(value = "/admin/user/create")
+    @PostMapping(value = "admin/user/create")
     public String createUserPage(Model model, @ModelAttribute("newUser") @Valid User res,
             BindingResult newUserbindingResult,
             @RequestParam("duckuroFile") MultipartFile file) {
@@ -60,7 +60,7 @@ public class UserController {
             System.out.println(error.getField() + " - " + error.getDefaultMessage());
         }
         if (newUserbindingResult.hasErrors()) {
-            return "/admin/user/create"; // không return redirect vì refresh lại => mất dữ liệu
+            return "admin/user/create"; // không return redirect vì refresh lại => mất dữ liệu
         }
         String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(res.getPassword());
@@ -71,14 +71,14 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-    @RequestMapping("/admin/user")
+    @RequestMapping("admin/user")
     public String displayUsers(Model model, User user) {
         ArrayList<User> arr = this.userService.getAllUsers();
         model.addAttribute("users", arr);
-        return "/admin/user/show";
+        return "admin/user/show";
     }
 
-    @GetMapping("/admin/user/update/{id}")
+    @GetMapping("admin/user/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
@@ -94,7 +94,7 @@ public class UserController {
             currentUser.setPhone(user.getPhone());
             this.userService.handleSaveUser(currentUser);
         }
-        return "redirect:/admin/user";
+        return "redirect:admin/user";
     }
 
     @RequestMapping("admin/user/{id}")
@@ -111,10 +111,10 @@ public class UserController {
         User user = new User();
         user.setId(id);
         model.addAttribute("newUser", user);
-        return "/admin/user/delete";
+        return "admin/user/delete";
     }
 
-    @PostMapping("/admin/user/delete")
+    @PostMapping("admin/user/delete")
     public String getDeleteUser(Model model, @ModelAttribute("newUser") User user) {
         this.userService.handleDeleteUser(user.getId());
         return "redirect:/admin/user";
