@@ -7,6 +7,7 @@ import java.util.*;
 import vn.duckuro.spring.domain.Product;
 import vn.duckuro.spring.domain.Role;
 import vn.duckuro.spring.domain.User;
+import vn.duckuro.spring.domain.DTO.RegisterDTO;
 import vn.duckuro.spring.repository.ProductRepository;
 import vn.duckuro.spring.repository.RoleRepository;
 import vn.duckuro.spring.repository.UserRepository;
@@ -51,5 +52,14 @@ public class UserService {
 
     public Role getRoleByName(String name) {
         return this.roleRepository.findFirstByName(name);
+    }
+
+    public User registerDTOtoUser(RegisterDTO registerDTO) {
+        User user = new User();
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+        user.setEmail(registerDTO.getEmail());
+        user.setPassword(registerDTO.getPassword());
+        user.setPhone(registerDTO.getPhone());
+        return user;
     }
 }

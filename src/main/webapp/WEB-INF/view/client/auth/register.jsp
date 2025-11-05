@@ -1,19 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
 taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<link href="<c:url value='/client/css/register.css'/>" rel="stylesheet" />
-
+prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Registration Form | CodingLab</title>
-  </head>
-  <body>
+    <title>Đăng ký tài khoản</title>
     <style>
-      /* Importing Google Fonts - Poppins */
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
       * {
         margin: 0;
@@ -23,221 +18,167 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       }
 
       body {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 10px;
         background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        padding: 20px;
       }
 
       .container {
-        max-width: 700px;
         width: 100%;
-        background-color: #fff;
-        padding: 25px 30px;
-        border-radius: 5px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+        max-width: 700px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       }
 
       .container .title {
-        font-size: 25px;
-        font-weight: 500;
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
         position: relative;
+        margin-bottom: 25px;
       }
 
       .container .title::before {
         content: "";
         position: absolute;
         left: 0;
-        bottom: 0;
-        height: 3px;
-        width: 30px;
+        bottom: -8px;
+        width: 50px;
+        height: 4px;
         border-radius: 5px;
         background: linear-gradient(135deg, #71b7e6, #9b59b6);
       }
 
-      .content form .user-details {
+      form {
+        width: 100%;
+      }
+
+      .user-details {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 20px 0 12px 0;
+        gap: 20px;
       }
 
-      form .user-details .input-box {
-        margin-bottom: 15px;
-        width: calc(100% / 2 - 20px);
+      .input-box {
+        flex: 1 1 calc(50% - 10px);
+        display: flex;
+        flex-direction: column;
       }
 
-      form .input-box span.details {
-        display: block;
+      .input-box span {
+        margin-bottom: 6px;
         font-weight: 500;
-        margin-bottom: 5px;
+        color: #555;
       }
 
-      .user-details .input-box input {
+      .input-box input {
         height: 45px;
-        width: 100%;
+        padding: 0 15px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
         outline: none;
         font-size: 16px;
-        border-radius: 5px;
-        padding-left: 15px;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
-        transition: all 0.3s ease;
+        transition: 0.3s;
       }
 
-      .user-details .input-box input:focus,
-      .user-details .input-box input:valid {
+      .input-box input:focus {
         border-color: #9b59b6;
+        box-shadow: 0 0 5px rgba(155, 89, 182, 0.3);
       }
 
-      form .gender-details .gender-title {
-        font-size: 20px;
-        font-weight: 500;
+      .button {
+        margin-top: 30px;
       }
 
-      form .category {
-        display: flex;
-        width: 80%;
-        margin: 14px 0;
-        justify-content: space-between;
-      }
-
-      form .category label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
-
-      form .category label .dot {
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        margin-right: 10px;
-        background: #d9d9d9;
-        border: 5px solid transparent;
-        transition: all 0.3s ease;
-      }
-
-      #dot-1:checked ~ .category label .one,
-      #dot-2:checked ~ .category label .two,
-      #dot-3:checked ~ .category label .three {
-        background: #9b59b6;
-        border-color: #d9d9d9;
-      }
-
-      form input[type="radio"] {
-        display: none;
-      }
-
-      form .button {
-        height: 45px;
-        margin: 35px 0;
-      }
-
-      form .button input {
-        height: 100%;
+      .button input {
         width: 100%;
-        border-radius: 5px;
+        padding: 12px 0;
+        border-radius: 8px;
         border: none;
-        color: #fff;
         font-size: 18px;
-        font-weight: 500;
-        letter-spacing: 1px;
+        font-weight: 600;
+        color: #fff;
         cursor: pointer;
-        transition: all 0.3s ease;
         background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        transition: 0.3s;
       }
 
-      form .button input:hover {
+      .button input:hover {
         background: linear-gradient(-135deg, #71b7e6, #9b59b6);
       }
 
-      /* Responsive media query code for mobile devices */
       @media (max-width: 584px) {
-        .container {
-          max-width: 100%;
-        }
-
-        form .user-details .input-box {
-          margin-bottom: 15px;
-          width: 100%;
-        }
-
-        form .category {
-          width: 100%;
-        }
-
-        .content form .user-details {
-          max-height: 300px;
-          overflow-y: scroll;
-        }
-
-        .user-details::-webkit-scrollbar {
-          width: 5px;
-        }
-      }
-
-      /* Responsive media query code for mobile devices */
-      @media (max-width: 459px) {
-        .container .content .category {
-          flex-direction: column;
+        .input-box {
+          flex: 1 1 100%;
         }
       }
     </style>
+  </head>
+  <body>
     <div class="container">
-      <!-- Title section -->
       <div class="title">ĐĂNG KÍ TÀI KHOẢN</div>
-      <div class="content">
-        <!-- Registration form -->
-        <form action="#">
-          <div class="user-details">
-            <!-- Input for Full Name -->
-            <div class="input-box">
-              <span class="details">First Name</span>
-              <input type="text" placeholder="Enter your First Name" required />
-            </div>
-            <!-- Input for Username -->
-            <div class="input-box">
-              <span class="details">Last Name</span>
-              <input type="text" placeholder="Enter your Last Name" required />
-            </div>
-            <!-- Input for Email -->
-            <div class="input-box">
-              <span class="details">Email</span>
-              <input type="email" placeholder="Enter your email" required />
-            </div>
-            <!-- Input for Phone Number -->
-            <div class="input-box">
-              <span class="details">Phone Number</span>
-              <input type="text" placeholder="Enter your number" required />
-            </div>
-            <!-- Input for Password -->
-            <div class="input-box">
-              <span class="details">Password</span>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                required
-              />
-            </div>
-            <!-- Input for Confirm Password -->
-            <div class="input-box">
-              <span class="details">Confirm Password</span>
-              <input
-                type="password"
-                placeholder="Confirm your password"
-                required
-              />
-            </div>
+      <form:form method="post" action="/register" modelAttribute="registerUser">
+        <div class="user-details">
+          <div class="input-box">
+            <span>Tên</span>
+            <form:input
+              path="firstName"
+              type="text"
+              placeholder="Enter your First Name"
+              required="required"
+            />
           </div>
-          <!-- Submit button -->
-          <div class="button">
-            <input type="submit" value="Register" />
+          <div class="input-box">
+            <span>Họ</span>
+            <form:input
+              path="lastName"
+              type="text"
+              placeholder="Enter your Last Name"
+              required="required"
+            />
           </div>
-        </form>
-      </div>
+          <div class="input-box">
+            <span>Email</span>
+            <form:input
+              path="email"
+              type="email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="input-box">
+            <span>Số Điện Thoại</span>
+            <form:input
+              path="phone"
+              type="text"
+              placeholder="Enter your number"
+            />
+          </div>
+          <div class="input-box">
+            <span>Mật Khẩu</span>
+            <form:password
+              path="password"
+              placeholder="Enter your password"
+              required="required"
+            />
+          </div>
+          <div class="input-box">
+            <span>Xác nhận mật khẩu</span>
+            <form:password
+              path="confirmPassword"
+              placeholder="Confirm your password"
+              required="required"
+            />
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="ĐĂNG KÝ" />
+        </div>
+      </form:form>
     </div>
   </body>
 </html>

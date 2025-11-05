@@ -28,7 +28,7 @@ public class ProductController {
         this.uploadService = uploadService;
     }
 
-    @GetMapping({"/admin/product", "/admin/product/"})
+    @GetMapping({ "/admin/product", "/admin/product/" })
     public String getProduct(Model model) {
         List<Product> arr = this.productService.getAllProducts();
         model.addAttribute("products", arr);

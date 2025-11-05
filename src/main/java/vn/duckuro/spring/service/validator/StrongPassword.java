@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
-@Constraint(validatedBy = { StrongPasswordValidator.class })
-@Target({ ElementType.METHOD, ElementType.FIELD })
-@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = { StrongPasswordValidator.class }) // đây là annotation với mục đích là validate data
+@Target({ ElementType.METHOD, ElementType.FIELD }) // định nghĩa phạm vi hoạt dông
+@Retention(RetentionPolicy.RUNTIME) // runtime: khi app chạy thì nó vào đây
 @Documented
 public @interface StrongPassword {
     String message() default "Mật khẩu không đủ mạnh";
