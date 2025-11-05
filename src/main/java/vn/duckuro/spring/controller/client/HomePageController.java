@@ -54,11 +54,10 @@ public class HomePageController {
     }
 
     @PostMapping(value = "/register")
-    public String createUserPage(Model model, @ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
-            BindingResult bindingResult) {
-        List<FieldError> errors = bindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
+    public String createUserPage(@ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
+            BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "client/auth/register";
         }
         User user = this.userService.registerDTOtoUser(registerDTO);
         System.out.println(user);
