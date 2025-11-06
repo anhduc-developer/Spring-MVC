@@ -69,6 +69,15 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
           action="/login"
           method="post"
         >
+          <c:set var="errorEmail">
+            <form:errors path="email" cssClass="invalid-feedback" />
+          </c:set>
+        <c:if test="${param.error != null}">
+          <div class="my-2" style="color: red">Email không hợp lệ</div>
+        </c:if>
+        <c:if test="${param.logout != null}">
+          <div class="my-2" style="color: rgb(43, 36, 141)">Đăng xuất thành công</div>
+        </c:if>
           <!-- Email -->
           <div class="organic-field">
             <div class="field-nature"></div>
@@ -117,7 +126,7 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
             <div class="button-aura"></div>
           </button>
         </form>
-
+ 
         <!-- 🌸 Đường phân chia -->
         <div class="balance-divider">
           <div class="divider-branch"></div>

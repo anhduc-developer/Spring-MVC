@@ -40,44 +40,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       <div class="spinner-grow text-primary" role="status"></div>
     </div>
     <jsp:include page="../layout/header.jsp" />
-    <div
-      class="modal fade"
-      id="searchModal"
-      tab-index="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content rounded-0">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
-              Search by keyword
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body d-flex align-items-center">
-            <div class="input-group w-75 mx-auto d-flex">
-              <input
-                type="search"
-                class="form-control p-3"
-                placeholder="keywords"
-                aria-describedby="search-icon-1"
-              />
-              <span id="search-icon-1" class="input-group-text p-3"
-                ><i class="fa fa-search"></i
-              ></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
     <jsp:include page="../layout/banner.jsp" />
-    
+
     <div class="container-fluid fruite py-5">
       <div class="container py-5">
         <div class="tab-class text-center">
@@ -198,14 +163,25 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                   value="${product.price}"
                                 />đ
                               </p>
-                              <form action="/cart/add" method="post" style="display:inline">
-                                <input type="hidden" name="productId" value="${product.id}" />
-                                <button type="submit"
+                              <form
+                                action="/cart/add"
+                                method="post"
+                                style="display: inline"
+                              >
+                                <input
+                                  type="hidden"
+                                  name="productId"
+                                  value="${product.id}"
+                                />
+                                <button
+                                  type="submit"
                                   class="mx-auto btn border border-secondary rounded-pill px-3 text-primary"
-                                ><i
-                                  class="fa fa-shopping-bag me-2 text-primary"
-                                ></i>
-                                Thêm vào giỏ hàng</button>
+                                >
+                                  <i
+                                    class="fa fa-shopping-bag me-2 text-primary"
+                                  ></i>
+                                  Thêm vào giỏ hàng
+                                </button>
                               </form>
                               >
                             </div>
