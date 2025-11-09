@@ -1,10 +1,8 @@
 package vn.duckuro.spring.service;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
-import vn.duckuro.spring.domain.Product;
 import vn.duckuro.spring.domain.Role;
 import vn.duckuro.spring.domain.User;
 import vn.duckuro.spring.domain.DTO.RegisterDTO;

@@ -15,7 +15,9 @@ import vn.duckuro.spring.domain.User;
 import vn.duckuro.spring.domain.DTO.RegisterDTO;
 import vn.duckuro.spring.service.ProductService;
 import vn.duckuro.spring.service.UserService;
-
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import vn.duckuro.spring.service.UploadService;
@@ -37,9 +39,11 @@ public class HomePageController {
     }
 
     @GetMapping("/")
-    public String getHomePage(Model model) {
+    public String getHomePage(Model model, HttpServletRequest request) {
         List<Product> products = this.productService.getAllProducts();
         model.addAttribute("products", products);
+        HttpSession session = request.getSession(false);
+
         return "client/homepage/show";
     }
 

@@ -164,14 +164,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                 />đ
                               </p>
                               <form
-                                action="/cart/add"
+                                action="/cart/add/${product.id}"
                                 method="post"
                                 style="display: inline"
                               >
                                 <input
                                   type="hidden"
-                                  name="productId"
-                                  value="${product.id}"
+                                  name="${_csrf.parameterName}"
+                                  value="${_csrf.token}"
                                 />
                                 <button
                                   type="submit"

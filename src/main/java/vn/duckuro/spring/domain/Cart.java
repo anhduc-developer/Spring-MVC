@@ -3,51 +3,58 @@ package vn.duckuro.spring.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.Min;
+
+@Entity
 public class Cart {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Min(value = 0)
+    private int sum;
+    @OneToOne()
+    @JoinColumn(name = "user_id")
+    private User user;
+    @OneToMany(mappedBy = "cart")
     private List<CartItem> items;
 
-    public Cart() {
-        this.items = new ArrayList<>();
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public List<CartItem> getItems() {
-        return items;
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setItems(List<CartItem> items) {
         this.items = items;
     }
 
-    public void addItem(Product product) {
-        for (CartItem item : items) {
-            if (item.getProduct().getId() == product.getId()) {
-                item.setQuantity(item.getQuantity() + 1);
-                return;
-            }
-        }
-        items.add(new CartItem(product, 1));
+    public long getId() {
+        return id;
     }
 
-    public void updateItem(Product product, int quantity) {
-        for (CartItem item : items) {
-            if (item.getProduct().getId() == product.getId()) {
-                item.setQuantity(quantity);
-                return;
-            }
-        }
+    public int getSum() {
+        return sum;
     }
 
-    public void removeItem(Long productId) {
-        items.removeIf(item -> item.getProduct().getId() == productId);
+    public User getUser() {
+        return user;
     }
 
-    public double getSubTotal() {
-        return items.stream()
-                .mapToDouble(CartItem::getSubTotal)
-                .sum();
+    public List<CartItem> getCartItems() {
+        return items;
     }
 
-    public boolean isEmpty() {
-        return items.isEmpty();
-    }
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import vn.duckuro.spring.domain.Product;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {

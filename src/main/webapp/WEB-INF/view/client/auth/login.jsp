@@ -73,7 +73,7 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
             <form:errors path="email" cssClass="invalid-feedback" />
           </c:set>
         <c:if test="${param.error != null}">
-          <div class="my-2" style="color: red">Email không hợp lệ</div>
+          <div class="my-2" style="color: red">TÀI KHOẢN KHÔNG HỢP LỆ</div>
         </c:if>
         <c:if test="${param.logout != null}">
           <div class="my-2" style="color: rgb(43, 36, 141)">Đăng xuất thành công</div>

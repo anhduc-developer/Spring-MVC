@@ -23,7 +23,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       </button>
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
-          <a href="" class="nav-item nav-link active">Trang chủ</a>
+          <a href="/" class="nav-item nav-link active">Trang chủ</a>
           <a href="" class="nav-item nav-link">Sản phẩm</a>
         </div>
         <div class="d-flex m-3 me-0">
@@ -33,7 +33,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <span
                 class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                 style="top: -5px; left: 15px; height: 20px; min-width: 20px"
-                >3</span
+                >${sessionScope.sum}</span
               >
             </a>
             <div class="dropdown my-auto">
@@ -65,9 +65,9 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                       border-radius: 50%;
                       overflow: hidden;
                     "
-                    src="/images/avatar/9f3b93402afe6721704f372f9b4aad64.jpg"
+                    src="/images/avatar/${sessionScope.avatar}"
                   />
-                  <div class="text-center my-3"><c:out value="${pageContext.request.userPrincipal.name}" /></div>
+                  <div class="text-center my-3"><c:out value="${sessionScope.fullName}" /></div>
                 </li>
                 <li><a class="dropdown-item" href="#">THÔNG TIN TÀI KHOẢN</a></li>
                 <li><a class="dropdown-item" href="#">LỊCH SỬ MUA HÀNG</a></li>

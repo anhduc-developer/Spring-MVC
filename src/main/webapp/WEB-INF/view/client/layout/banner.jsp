@@ -17,7 +17,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active rounded">
               <img
-                src="/client/img/laptop_1.jpg"
+                src="/images/product/72c9c83b0510fc070430c31390bf2bee.jpg"
                 class="img-fluid w-100 h-100 bg-secondary rounded"
                 alt="First slide"
               />
@@ -25,11 +25,10 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
             <div class="carousel-item rounded">
               <img
-                src="client/img/iphone_1.jpg"
+                src="/images/product/acf2bb046e41e126e0196bdb101ed687.jpg"
                 class="img-fluid w-100 h-100 rounded"
                 alt="Second slide"
               />
-              <a href="#" class="btn px-4 py-2 text-white rounded">Phone</a>
             </div>
           </div>
           <button

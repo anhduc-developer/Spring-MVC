@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity // bien 1 class thong thuong thanh 1 entity
@@ -43,6 +44,9 @@ public class User {
     private Role role;
     @OneToMany(mappedBy = "user")
     List<Order> orders;
+
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
 
     public Role getRole() {
         return role;
@@ -116,9 +120,17 @@ public class User {
         this.orders = orders;
     }
 
+    public Cart getCart() {
+        return this.cart;
+    }
+
     @Override
     public String toString() {
         return this.id + " " + this.email + " " + this.password + " " + this.fullName + " " + this.phone + " "
                 + this.address + " " + this.avatar;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }
