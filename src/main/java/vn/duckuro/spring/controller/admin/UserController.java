@@ -71,21 +71,21 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-    @RequestMapping("admin/user")
+    @RequestMapping("/admin/user")
     public String displayUsers(Model model, User user) {
         ArrayList<User> arr = this.userService.getAllUsers();
         model.addAttribute("users", arr);
-        return "admin/user/show";
+        return "/admin/user/show";
     }
 
-    @GetMapping("admin/user/update/{id}")
+    @GetMapping("/admin/user/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
-        return "admin/user/update";
+        return "/admin/user/update";
     }
 
-    @GetMapping("admin/user/update")
+    @GetMapping("/admin/user/update")
     public String getUpdateUser(Model model, @ModelAttribute("newUser") User user) {
         User currentUser = this.userService.getUserById(user.getId());
         if (currentUser != null) {
@@ -94,10 +94,10 @@ public class UserController {
             currentUser.setPhone(user.getPhone());
             this.userService.handleSaveUser(currentUser);
         }
-        return "redirect:admin/user";
+        return "redirect:/admin/user";
     }
 
-    @RequestMapping("admin/user/{id}")
+    @RequestMapping("/admin/user/{id}")
     public String getDetailUser(Model model, @PathVariable long id) {
         User user = this.userService.getUserById(id);
         model.addAttribute("id", id);
@@ -105,7 +105,7 @@ public class UserController {
         return "admin/user/detail";
     }
 
-    @GetMapping("admin/user/delete/{id}")
+    @GetMapping("/admin/user/delete/{id}")
     public String getDeleteUser(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
         User user = new User();
@@ -114,7 +114,7 @@ public class UserController {
         return "admin/user/delete";
     }
 
-    @PostMapping("admin/user/delete")
+    @PostMapping("/admin/user/delete")
     public String getDeleteUser(Model model, @ModelAttribute("newUser") User user) {
         this.userService.handleDeleteUser(user.getId());
         return "redirect:/admin/user";

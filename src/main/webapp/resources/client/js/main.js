@@ -137,6 +137,7 @@
 
         $input.val(val);
         updateCartTotal();
+        $row.find(".quantity-input").val(val);
     });
 
     // Nhập thủ công số lượng
@@ -153,3 +154,4 @@
     });
 
 })(jQuery);
+

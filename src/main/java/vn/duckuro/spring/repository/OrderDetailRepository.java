@@ -3,8 +3,7 @@ package vn.duckuro.spring.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import vn.duckuro.spring.domain.Cart;
-import vn.duckuro.spring.domain.User;
+import vn.duckuro.spring.domain.OrderDetail;
 
-public interface CartRepository extends JpaRepository<Cart, Long> {
-    Cart findByUser(User user);
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
 }

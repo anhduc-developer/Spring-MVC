@@ -1,16 +1,19 @@
 package vn.duckuro.spring.service;
 
 import java.util.*;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
 import vn.duckuro.spring.domain.Cart;
 import vn.duckuro.spring.domain.CartItem;
+import vn.duckuro.spring.domain.Order;
+import vn.duckuro.spring.domain.OrderDetail;
 import vn.duckuro.spring.domain.Product;
 import vn.duckuro.spring.domain.User;
 import vn.duckuro.spring.repository.CartDetailRepository;
 import vn.duckuro.spring.repository.CartRepository;
+import vn.duckuro.spring.repository.OrderDetailRepository;
+import vn.duckuro.spring.repository.OrderRepository;
 import vn.duckuro.spring.repository.ProductRepository;
 
 @Service
@@ -19,13 +22,18 @@ public class ProductService {
     private final CartRepository cartRepository;
     private final CartDetailRepository cartDetailRepository;
     private final UserService userService;
+    private final OrderRepository orderRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
     public ProductService(ProductRepository productRepository, CartRepository cartRepository,
-            CartDetailRepository cartDetailRepository, UserService userService) {
+            CartDetailRepository cartDetailRepository, UserService userService, OrderRepository orderRepository,
+            OrderDetailRepository orderDetailRepository) {
         this.productRepository = productRepository;
         this.cartDetailRepository = cartDetailRepository;
         this.cartRepository = cartRepository;
         this.userService = userService;
+        this.orderRepository = orderRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
     public Product createProduct(Product result) {
@@ -83,6 +91,10 @@ public class ProductService {
         return this.cartRepository.findByUser(user);
     }
 
+    public Cart hanldeSaveCart(Cart cart) {
+        return this.cartRepository.save(cart);
+    }
+
     public void handleRemoveCartItem(long cartItemId, HttpSession session) {
         Optional<CartItem> cartItemOptional = cartDetailRepository.findById(cartItemId);
         if (cartItemOptional.isPresent()) {
@@ -100,5 +112,55 @@ public class ProductService {
             }
         }
 
+    }
+
+    public void handleUpdateCart(long cartItemId, int quantity, HttpSession session) {
+        Optional<CartItem> cartItemOptional = this.cartDetailRepository.findById(cartItemId);
+        if (cartItemOptional.isPresent()) {
+            CartItem cartItem = cartItemOptional.get();
+            Cart cart = cartItem.getCart();
+            cartItem.setQuantity(quantity);
+            cartDetailRepository.save(cartItem);
+            List<CartItem> cartItems = this.cartDetailRepository.findByCart(cart);
+            int totalQuantity = 0;
+            for (CartItem item : cartItems) {
+                totalQuantity += 1;
+            }
+            cart.setSum(totalQuantity);
+            this.cartRepository.save(cart);
+            session.setAttribute("sum", totalQuantity);
+        }
+
+    }
+
+    public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
+            String receiverPhone) {
+        // create order
+        Order order = new Order();
+        order.setUser(user);
+        order.setReceiverName(receiverName);
+        order.setReceiverPhone(receiverPhone);
+        order.setReceiverAddress(receiverAddress);
+        order = this.orderRepository.save(order);
+
+        // create orderDetaill
+        Long cartId = (Long) session.getAttribute("cartId");
+        Cart cart = this.cartRepository.findById(cartId).orElse(null);
+        cart.setSum(0);
+        if (cart != null) {
+            List<CartItem> cartItems = cartDetailRepository.findByCart(cart);
+            if (cartItems != null && !cartItems.isEmpty()) {
+                for (CartItem x : cartItems) {
+                    OrderDetail orderDetail = new OrderDetail();
+                    orderDetail.setOrder(order); // Set order đúng
+                    orderDetail.setProduct(x.getProduct());
+                    orderDetail.setPrice(x.getPrice());
+                    orderDetail.setQuantity(x.getQuantity());
+                    orderDetailRepository.save(orderDetail);
+                }
+                this.cartDetailRepository.deleteAll(cartItems);
+                session.setAttribute("sum", 0);
+            }
+        }
     }
 }

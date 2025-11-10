@@ -34,7 +34,7 @@ public class User {
     private String password;
     @NotNull
     @Size(min = 3, message = "Họ và tên phải có tối thiểu 3 ký tự")
-    private String fullName;
+    private String fullName; ///
     private String address;
     private String phone;
     private String avatar;

@@ -24,6 +24,43 @@ public class Order {
     @OneToMany(mappedBy = "order")
     List<OrderDetail> orderdetails;
 
+    private String receiverName;
+    private String receiverAddress;
+    private String receiverPhone;
+    private String status;
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public String getReceiverAddress() {
+        return receiverAddress;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public void setReceiverAddress(String receiverAddress) {
+        this.receiverAddress = receiverAddress;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public long getId() {
         return id;
     }
@@ -38,6 +75,10 @@ public class Order {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

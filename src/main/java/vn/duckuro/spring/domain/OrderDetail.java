@@ -17,7 +17,7 @@ public class OrderDetail {
     private long quantity;
     private double price;
     @ManyToOne
-    @JoinColumn(name = "oder_id")
+    @JoinColumn(name = "order_id")
     private Order order;
     @ManyToOne
     @JoinColumn(name = "product_id")

@@ -68,6 +68,13 @@
                                     </span>
                                 </td>
                                 <td>
+                                  <form action="/cart/update/${item.id}" method="post">
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                                    <input type="hidden" name="quantity" value="${item.quantity}" min=1 class="quantity-input">
+                                    <button type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
+                                  </form>
+                                </td>
+                                <td>
                                     <form action="/cart/remove/${item.id}" method="post">
                                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                         <button class="btn btn-sm btn-danger">Xóa</button>
@@ -78,7 +85,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div class="d-flex justify-content-end">
                     <div class="card p-3" style="min-width:320px">
                         <div class="d-flex justify-content-between mb-2">
@@ -99,7 +105,6 @@
             </c:otherwise>
         </c:choose>
     </div>
-
     <jsp:include page="../layout/footer.jsp" />
 
     <!-- JS -->

@@ -1,8 +1,10 @@
 package vn.duckuro.spring.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +24,8 @@ public class Cart {
     @OneToOne()
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(mappedBy = "cart")
-    private List<CartItem> items;
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems;
 
     public void setId(long id) {
         this.id = id;
@@ -37,8 +39,8 @@ public class Cart {
         this.user = user;
     }
 
-    public void setItems(List<CartItem> items) {
-        this.items = items;
+    public void setCartItems(List<CartItem> cartItems) {
+        this.cartItems = cartItems;
     }
 
     public long getId() {
@@ -54,7 +56,7 @@ public class Cart {
     }
 
     public List<CartItem> getCartItems() {
-        return items;
+        return cartItems;
     }
 
 }
