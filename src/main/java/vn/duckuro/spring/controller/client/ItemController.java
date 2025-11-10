@@ -134,6 +134,7 @@ public class ItemController {
         currentUser = this.userRepository.findById(id);
         System.out.println(currentUser);
         this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
+
         return "client/cart/thanks";
     }
 

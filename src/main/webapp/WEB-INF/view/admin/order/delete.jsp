@@ -34,58 +34,36 @@ uri="http://www.springframework.org/tags/form" prefix="form" %>
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
               <li class="breadcrumb-item active">Users</li>
             </ol>
+
             <div class="container mt-5">
               <div class="row">
-                <div class="col-md-6 col-12 mx-auto">
-                  <h3>Update a user</h3>
+                <div class="col-12 mx-auto">
+                  <h3>Delete a user with id = ${id}</h3>
                   <hr />
+                  <div class="alert alert-danger">
+                    Are you sure you want to delete this user?
+                  </div>
+
                   <form:form
                     method="post"
-                    action="/admin/user/update"
-                    modelAttribute="newUser"
+                    modelAttribute="order"
+                    action="/admin/order/delete"
                   >
                     <div class="mb-3" style="display: none">
                       <label class="form-label">ID:</label>
-                      <form:input type="text" class="form-control" path="id" />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Email:</label>
                       <form:input
-                        type="email"
-                        class="form-control"
-                        path="email"
-                        disabled="true"
-                      />
-                    </div>
-                    <div class="mb-3">
-                      <label class="form-label">Phone number:</label>
-                      <form:input
+                        path="id"
                         type="text"
                         class="form-control"
-                        path="phone"
+                        value="${id}"
                       />
                     </div>
-
-                    <div class="mb-3">
-                      <label class="form-label">Full Name:</label>
-                      <form:input
-                        type="text"
-                        class="form-control"
-                        path="fullName"
-                      />
-                    </div>
-
-                    <div class="mb-3">
-                      <label class="form-label">Address:</label>
-                      <form:input
-                        type="text"
-                        class="form-control"
-                        path="address"
-                      />
-                    </div>
-
-                    <button type="submit" class="btn btn-warning">Update</button
-                    ><br />
+                    <button type="submit" class="btn btn-danger">
+                      Confirm
+                    </button>
+                    <a href="/admin/order" class="btn btn-secondary ms-2"
+                      >Cancel</a
+                    >
                   </form:form>
                 </div>
               </div>

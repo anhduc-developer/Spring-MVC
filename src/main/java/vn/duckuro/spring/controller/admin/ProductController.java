@@ -62,7 +62,6 @@ public class ProductController {
     @GetMapping("/admin/product/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         Product currentProduct = this.productService.getProductById(id);
-        System.out.println(currentProduct);
         model.addAttribute("newProduct", currentProduct);
         return "admin/product/update";
     }
@@ -71,8 +70,6 @@ public class ProductController {
     public String postUpdateProduct(@ModelAttribute("newProduct") @Valid Product product,
             BindingResult newProductBindingResult, @RequestParam("duckuroFile") MultipartFile file) {
         Product currentProduct = this.productService.getProductById(product.getId());
-        System.out.println(product);
-        System.out.println("Hellfaióhgoáihgsikug ákugápo ìapóidfúaoi");
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/update";
         }
@@ -113,6 +110,6 @@ public class ProductController {
         Product product = this.productService.getProductById(id);
         model.addAttribute("id", id);
         model.addAttribute("product", product);
-        return "/admin/product/detail";
+        return "admin/product/detail";
     }
 }

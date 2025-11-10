@@ -75,14 +75,14 @@ public class UserController {
     public String displayUsers(Model model, User user) {
         ArrayList<User> arr = this.userService.getAllUsers();
         model.addAttribute("users", arr);
-        return "/admin/user/show";
+        return "admin/user/show";
     }
 
     @GetMapping("/admin/user/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
-        return "/admin/user/update";
+        return "admin/user/update";
     }
 
     @GetMapping("/admin/user/update")
