@@ -68,4 +68,9 @@ public class UserService {
     public User getUserByEmail(String email) {
         return this.userRepository.findByEmail(email);
     }
+
+    public long countUsers() {
+        List<User> users = this.userRepository.findAll();
+        return users.size();
+    }
 }

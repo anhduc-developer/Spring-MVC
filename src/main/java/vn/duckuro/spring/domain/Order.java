@@ -22,7 +22,7 @@ public class Order {
     @JoinColumn(name = "user_id")
     private User user;
     @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderdetails;
+    List<OrderDetail> orderDetails;
 
     private String receiverName;
     private String receiverAddress;
@@ -79,6 +79,14 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(List<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     @Override

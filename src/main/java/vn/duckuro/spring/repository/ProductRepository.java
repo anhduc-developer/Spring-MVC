@@ -14,4 +14,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     ArrayList<Product> findByName(String res);
 
     Product findById(long id);
+
+    List<Product> findByFactory(String factory);
 }

@@ -155,6 +155,7 @@ public class ProductService {
                     sum += x.getPrice();
                 }
                 order.setTotalPrice(sum);
+                order.setStatus("Đã Xác Nhận");
                 order = this.orderRepository.save(order);
                 for (CartItem x : cartItems) {
                     OrderDetail orderDetail = new OrderDetail();
@@ -165,8 +166,18 @@ public class ProductService {
                     orderDetailRepository.save(orderDetail);
                 }
                 this.cartDetailRepository.deleteAll(cartItems);
+
                 session.setAttribute("sum", 0);
             }
         }
+    }
+
+    public long countProducts() {
+        List<Product> products = this.productRepository.findAll();
+        return products.size();
+    }
+
+    public List<Product> findByFactory(String factory) {
+        return this.productRepository.findByFactory(factory);
     }
 }

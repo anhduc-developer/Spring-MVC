@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import vn.duckuro.spring.controller.admin.OrderController;
 import vn.duckuro.spring.domain.Order;
 import vn.duckuro.spring.domain.OrderDetail;
+import vn.duckuro.spring.domain.Product;
+import vn.duckuro.spring.domain.User;
 import vn.duckuro.spring.repository.OrderDetailRepository;
 import vn.duckuro.spring.repository.OrderRepository;
 
@@ -58,4 +60,18 @@ public class OrderService {
         List<OrderDetail> arr = this.orderDetailRepository.findByOrderId(id);
         return arr;
     }
+
+    public List<Order> getAllOrders() {
+        return this.orderRepository.findAll();
+    }
+
+    public long countOrders() {
+        List<Order> orders = this.orderRepository.findAll();
+        return orders.size();
+    }
+
+    public List<Order> getAllOrders(long id) {
+        return this.orderRepository.findByUserId(id);
+    }
+
 }

@@ -11,7 +11,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <div class="container px-0">
     <nav class="navbar navbar-light bg-white navbar-expand-xl">
       <a href="" class="navbar-brand"
-        ><h1 class="text-primary display-6">Tech Store</h1></a
+        ><h1 class="text-primary display-6"><a href="/">TECH STORE</a></h1></a
       >
       <button
         class="navbar-toggler py-2 px-3"
@@ -24,7 +24,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
         <div class="navbar-nav mx-auto">
           <a href="/" class="nav-item nav-link active">Trang chủ</a>
-          <a href="" class="nav-item nav-link">Sản phẩm</a>
+          <a href="/products" class="nav-item nav-link">Sản phẩm</a>
         </div>
         <div class="d-flex m-3 me-0">
           <c:if test="${not empty pageContext.request.userPrincipal}">
@@ -70,7 +70,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                   <div class="text-center my-3"><c:out value="${sessionScope.fullName}" /></div>
                 </li>
                 <li><a class="dropdown-item" href="#">THÔNG TIN TÀI KHOẢN</a></li>
-                <li><a class="dropdown-item" href="#">LỊCH SỬ MUA HÀNG</a></li>
+                <li><a class="dropdown-item" href="/history">LỊCH SỬ MUA HÀNG</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
