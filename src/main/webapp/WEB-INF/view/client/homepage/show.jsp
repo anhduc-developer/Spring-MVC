@@ -50,57 +50,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             <div class="col-lg-4 text-start">
               <h1>Sản phẩm nổi bật</h1>
             </div>
-            <div class="col-lg-8 text-end">
-              <ul class="nav nav-pills d-inline-flex text-center mb-5">
-                <li class="nav-item">
-                  <a
-                    class="d-flex m-2 py-2 bg-light rounded-pill active"
-                    data-bs-toggle="pill"
-                    href="#tab-1"
-                  >
-                    <span class="text-dark" style="width: 130px"
-                      >Tất Cả Sản Phẩm</span
-                    >
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="d-flex py-2 m-2 bg-light rounded-pill"
-                    data-bs-toggle="pill"
-                    href="#tab-2"
-                  >
-                    <span class="text-dark" style="width: 130px">Macbook</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="d-flex m-2 py-2 bg-light rounded-pill"
-                    data-bs-toggle="pill"
-                    href="#tab-3"
-                  >
-                    <span class="text-dark" style="width: 130px">Asus</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="d-flex m-2 py-2 bg-light rounded-pill"
-                    data-bs-toggle="pill"
-                    href="#tab-4"
-                  >
-                    <span class="text-dark" style="width: 130px">Lenovo</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    class="d-flex m-2 py-2 bg-light rounded-pill"
-                    data-bs-toggle="pill"
-                    href="#tab-5"
-                  >
-                    <span class="text-dark" style="width: 130px">HP</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
           </div>
           <div class="tab-content">
             <div id="tab-1" class="tab-pane fade show p-0 active">
@@ -183,7 +132,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                                   Thêm vào giỏ hàng
                                 </button>
                               </form>
-                              >
                             </div>
                           </div>
                         </div>

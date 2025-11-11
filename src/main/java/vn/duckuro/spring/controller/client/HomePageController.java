@@ -28,6 +28,9 @@ import jakarta.validation.Valid;
 
 import vn.duckuro.spring.service.UploadService;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.fasterxml.jackson.annotation.JsonCreator.Mode;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
@@ -122,4 +125,56 @@ public class HomePageController {
         }
         return "client/homepage/product";
     }
+
+    @GetMapping("/information")
+    public String getInformationClient(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        String email = (String) session.getAttribute("email");
+        User user = this.userService.getUserByEmail(email);
+        model.addAttribute("user", user);
+        return "client/auth/infor";
+    }
+
+    @GetMapping("/user/update/{id}")
+    public String getUpdateUser(@PathVariable long id, Model model) {
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "client/auth/update";
+    }
+
+    @PostMapping("/user/update")
+    public String postUpdateUser(@ModelAttribute("user") User user, Model model) {
+        this.userService.handleUpdateUser(user);
+        return "redirect:/information";
+    }
+
+    @GetMapping("/change-password")
+    public String getChangePassword(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        long id = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(id);
+        model.addAttribute("user", user);
+        return "client/auth/change";
+    }
+
+    @PostMapping("/change-password")
+    public String postChangePassword(@RequestParam("newPassword") String newPassword,
+            @RequestParam("confirmPassword") String confirmPassword, Model model,
+            HttpServletRequest request) {
+        if (!newPassword.equals(confirmPassword)) {
+            model.addAttribute("error", "Mật Khẩu Không Khớp!!");
+            return "client/auth/errorPassword";
+        } else if (newPassword.length() < 8) {
+            model.addAttribute("error", "Mật Khẩu Phải Có Ít Nhất 8 Ký Tự");
+            return "client/auth/errorPassword";
+        }
+        HttpSession session = request.getSession(false);
+        long id = (long) session.getAttribute("id");
+        User currentUser = this.userService.getUserById(id);
+        String hashPassword = this.passwordEncoder.encode(newPassword);
+        currentUser.setPassword(hashPassword);
+        this.userService.handleChangePassword(currentUser);
+        return "redirect:/";
+    }
+
 }

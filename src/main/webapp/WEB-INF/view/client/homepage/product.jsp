@@ -44,7 +44,9 @@ prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
                 alt="${product.name}"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title text-truncate">${product.name}</h5>
+                <h5 class="card-title text-truncate">
+                  <a href="/product/${product.id}">${product.name}</a>
+                </h5>
                 <p class="card-text text-truncate">${product.shortDesc}</p>
                 <p class="fw-bold text-primary mb-3">
                   <fmt:formatNumber

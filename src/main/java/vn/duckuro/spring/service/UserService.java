@@ -73,4 +73,12 @@ public class UserService {
         List<User> users = this.userRepository.findAll();
         return users.size();
     }
+
+    public void handleUpdateUser(User user) {
+        this.userRepository.save(user);
+    }
+
+    public void handleChangePassword(User user) {
+        this.userRepository.save(user);
+    }
 }

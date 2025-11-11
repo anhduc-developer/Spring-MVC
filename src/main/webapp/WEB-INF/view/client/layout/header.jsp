@@ -69,11 +69,13 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                   />
                   <div class="text-center my-3"><c:out value="${sessionScope.fullName}" /></div>
                 </li>
-                <li><a class="dropdown-item" href="#">THÔNG TIN TÀI KHOẢN</a></li>
+                <li><a class="dropdown-item" href="/information">THÔNG TIN TÀI KHOẢN</a></li>
                 <li><a class="dropdown-item" href="/history">LỊCH SỬ MUA HÀNG</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
+                <li><a class="dropdown-item text-danger" href="/change-password">ĐỔI MẬT KHẨU?</a></li>
+
                 <form method="post" action="/logout">
                     <input
                     type="hidden"

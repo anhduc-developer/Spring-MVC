@@ -1,0 +1,90 @@
+.user-info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+.user-info-card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 30px;
+    text-align: center;
+}
+
+.user-info-card h2 {
+    color: #7AC943;
+    margin-bottom: 20px;
+}
+
+.avatar-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar-section img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #d9f0c2;
+}
+
+.avatar-upload {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.user-info-card form {
+    text-align: left;
+}
+
+.user-info-card label {
+    font-weight: 600;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.user-info-card input,
+.user-info-card select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.gender-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dob-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.update-btn {
+    background-color: #7AC943;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.update-btn:hover {
+    background-color: #6ab339;
+}
