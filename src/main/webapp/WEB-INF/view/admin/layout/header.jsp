@@ -6,17 +6,9 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <a class="navbar-brand ps-3" href="/admin">Mai Anh Đức</a>
 
   <!-- Sidebar Toggle-->
-  <button
-    class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
-    id="sidebarToggle"
-  >
-    <i class="fas fa-bars"></i>
-  </button>
 
   <!-- Navbar Search-->
     <div class="input-group">
-      <button class="btn btn-primary" id="btnNavbarSearch" type="button">
-        <i class="fas fa-search"></i>
       </button>
     </div>
   </form>
@@ -37,8 +29,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         class="dropdown-menu dropdown-menu-end"
         aria-labelledby="navbarDropdown"
       >
-        <li><a class="dropdown-item" href="#!">Settings</a></li>
-        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        <li><a class="dropdown-item" href="/">Homepage</a></li>
         <li><hr class="dropdown-divider" /></li>
                 <form method="post" action="/logout">
                     <input

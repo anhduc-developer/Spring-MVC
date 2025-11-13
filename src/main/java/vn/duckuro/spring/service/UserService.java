@@ -27,6 +27,7 @@ public class UserService {
         return "Hello from Service";
     }
 
+    // dependency injection
     public ArrayList<User> getAllUsers() {
         return (ArrayList<User>) this.userRepository.findAll();
     }
@@ -63,6 +64,10 @@ public class UserService {
 
     public boolean checkEmailExist(String email) {
         return this.userRepository.existsByEmail(email);
+    }
+
+    public boolean checkPhoneExist(String phone) {
+        return this.userRepository.existsByPhone(phone);
     }
 
     public User getUserByEmail(String email) {

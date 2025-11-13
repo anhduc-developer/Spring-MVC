@@ -1,5 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> <%@
-taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
+prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> <%@ taglib prefix="form"
+uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,15 +31,15 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid px-4">
-            <h1 class="mt-4">Manager Products</h1>
+            <h1 class="mt-4">Quản Lý Sản Phẩm</h1>
             <ol class="breadcrumb mb-4">
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-              <li class="breadcrumb-item active">Products</li>
+              <li class="breadcrumb-item active">Sản Phẩm</li>
             </ol>
 
             <div class="row">
               <div class="col-12 mx-auto">
-                <h3>Table Products</h3>
+                <h3>Danh Sách Sản Phẩm</h3>
                 <a href="/admin/product/create" class="btn btn-primary mb-3"
                   >Thêm mới sản phẩm</a
                 >
@@ -56,7 +59,14 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                       <tr>
                         <td>${product.id}</td>
                         <td>${product.name}</td>
-                        <td>${product.price}</td>
+                        <td>
+                          <fmt:formatNumber
+                            value="${product.price}"
+                            type="number"
+                            minFractionDigits="0"
+                          />
+                        </td>
+
                         <td>${product.sold}</td>
                         <td>
                           <a
@@ -93,6 +103,6 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
     ></script>
-  <script src="/resources/js/scripts.js"></script>
+    <script src="/resources/js/scripts.js"></script>
   </body>
 </html>

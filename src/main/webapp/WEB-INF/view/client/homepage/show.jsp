@@ -13,6 +13,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
       rel="stylesheet"
     />
 
+    <link href="/client/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="/client/css/style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -72,7 +75,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
                             class="text-white bg-secondary px-3 py-1 rounded position-absolute"
                             style="top: 10px; left: 10px"
                           >
-                            Laptop
+                            Flash Sale
                           </div>
                           <div
                             class="p-4 border border-secondary border-top-0 rounded-bottom d-flex flex-column flex-grow-1"

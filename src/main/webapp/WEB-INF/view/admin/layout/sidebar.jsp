@@ -42,7 +42,7 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <div class="sb-sidenav-footer">
       <div class="small">Tên người dùng:</div>
-      Mai Anh Đức
+      ADMIN
     </div>
   </nav>
 </div>

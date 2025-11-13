@@ -74,6 +74,10 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
+                <c:if test="${role.name == 'ADMIN'}">
+                    <a href="/admin" class="btn"> Trang quản lý</a>
+                </c:if>
+
                 <li><a class="dropdown-item text-danger" href="/change-password">ĐỔI MẬT KHẨU?</a></li>
 
                 <form method="post" action="/logout">

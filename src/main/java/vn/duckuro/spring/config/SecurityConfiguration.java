@@ -63,12 +63,13 @@ public class SecurityConfiguration {
                         .dispatcherTypeMatchers(DispatcherType.FORWARD,
                                 DispatcherType.INCLUDE)
                         .permitAll()
-                        .requestMatchers("/", "/login", "/register", "/client/**", "/cart/**", "/css/**", "/js/**",
+                        .requestMatchers("/", "/login", "/products", "/register", "/client/**", "/cart/**", "/css/**",
+                                "/js/**",
                                 "/product/**",
                                 "/cart/**",
-                                "/images/**")
+                                "/images/**") // cho phep tat ca cai nay truy
                         .permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN") // day la cho cap quyen truy cap vao
                         .anyRequest().authenticated())
 
                 .sessionManagement((sessionManagement) -> sessionManagement

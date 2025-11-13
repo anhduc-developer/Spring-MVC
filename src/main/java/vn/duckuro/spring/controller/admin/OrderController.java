@@ -68,5 +68,9 @@ public class OrderController {
         model.addAttribute("items", arr);
         return "admin/order/detail";
     }
-
+    // =>: front-end
+    // =>: session:tai sao em khong update o session minh vua vao => du lieu quan
+    // trong khong tuan thuong
+    // =>: vi du nhu: gio hang , khong can phai luu vao database => vi du thua du
+    // lieu, (session)
 }

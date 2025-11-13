@@ -81,11 +81,17 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <h1>403</h1>
       <h2>Truy cập bị từ chối</h2>
       <p>
-        Bạn không có quyền truy cập vào trang này.<br />
-        Vui lòng quay lại trang chủ hoặc liên hệ quản trị viên nếu bạn nghĩ đây
-        là lỗi.
+        <c:choose>
+          <c:when test="${not empty errorMessage}">
+            <c:out value="${errorMessage}" />
+          </c:when>
+          <c:otherwise>
+            Bạn không có quyền truy cập vào trang này.<br />
+            Vui lòng quay lại trang chủ hoặc liên hệ quản trị viên nếu bạn nghĩ
+            đây là lỗi.
+          </c:otherwise>
+        </c:choose>
       </p>
-
       <a href="<c:url value='/'/>" class="btn">Về trang chủ</a>
     </div>
   </body>

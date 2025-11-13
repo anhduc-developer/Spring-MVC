@@ -28,17 +28,17 @@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid px-4">
-            <h1 class="mt-4">Manager Users</h1>
+            <h1 class="mt-4">Quản Lý Người Dùng</h1>
             <ol class="breadcrumb mb-4">
               <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-              <li class="breadcrumb-item active">Users</li>
+              <li class="breadcrumb-item active">Người Dùng</li>
             </ol>
 
     <div>
       <div class="row">
         <div class="col-12 mx-auto">
           <h3>Table users</h3>
-          <a href="/admin/user/create" class="btn btn-primary">Create a user</a>
+          <a href="/admin/user/create" class="btn btn-primary">Danh Sách Người Dùng</a>
             </div>
             <hr>
             <table class="table table-bordered table-hover">

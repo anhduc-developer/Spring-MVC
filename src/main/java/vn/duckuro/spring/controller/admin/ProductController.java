@@ -28,7 +28,7 @@ public class ProductController {
         this.uploadService = uploadService;
     }
 
-    @GetMapping({ "/admin/product", "/admin/product/" })
+    @GetMapping("/admin/product")
     public String getProduct(Model model) {
         List<Product> arr = this.productService.getAllProducts();
         model.addAttribute("products", arr);
@@ -85,9 +85,9 @@ public class ProductController {
                 String photo = this.uploadService.handleSaveUploadFile(file, "product");
                 currentProduct.setPhoto(photo);
             }
-            this.productService.handleSaveProduct(currentProduct);
+            this.productService.handleSaveProduct(currentProduct); // goi service luu cho tao
         }
-        return "redirect:/admin/product";
+        return "redirect:/admin/product"; // tro ve trang product
     }
 
     @GetMapping("/admin/product/delete/{id}")
@@ -100,7 +100,7 @@ public class ProductController {
     }
 
     @PostMapping("admin/product/delete")
-    public String getDeleteUser(Model model, @ModelAttribute("newProduct") Product product) {
+    public String postDeleteProduct(Model model, @ModelAttribute("newProduct") Product product) {
         this.productService.handleDelteProduct(product.getId());
         return "redirect:/admin/product";
     }

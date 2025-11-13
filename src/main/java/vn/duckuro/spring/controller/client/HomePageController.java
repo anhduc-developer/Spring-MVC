@@ -56,6 +56,9 @@ public class HomePageController {
         List<Product> products = this.productService.getAllProducts();
         model.addAttribute("products", products);
         HttpSession session = request.getSession(false);
+        long id = (long) session.getAttribute("id");
+        User user = this.userService.getUserById(id);
+        model.addAttribute("role", user.getRole());
         return "client/homepage/show";
     }
 

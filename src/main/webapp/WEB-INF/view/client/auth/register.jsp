@@ -153,6 +153,9 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
 
         <!-- Phone -->
         <div class="col-md-6">
+          <c:set var="errorPhone">
+            <form:errors path="phone" cssClass="invalid-feedback" />
+          </c:set>
           <label class="form-label">Số điện thoại</label>
           <form:input
             path="phone"
@@ -160,6 +163,7 @@ prefix="form" uri="http://www.springframework.org/tags/form" %>
             class="form-control"
             placeholder="Nhập số điện thoại"
           />
+          ${errorPhone}
         </div>
 
         <!-- Password -->

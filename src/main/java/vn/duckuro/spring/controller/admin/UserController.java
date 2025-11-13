@@ -34,20 +34,22 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @RequestMapping("/")
-    public String getHomePage(Model model) {
-        List<User> arr = this.userService.getAllUsers();
-        System.out.println(arr);
-        model.addAttribute("duckuro", "test");
-        model.addAttribute("duc", "Hello from Spring Boot!");
-        model.addAttribute("print", "Xin chao ban");
-        model.addAttribute("duck", "PTIT");
-        return "hello";
-    }
+    // @RequestMapping("/")
+    // public String getHomePage(Model model) {
+    // List<User> arr = this.userService.getAllUsers();
+    // System.out.println(arr);
+    // model.addAttribute("duckuro", "test");
+    // model.addAttribute("duc", "Hello from Spring Boot!");
+    // model.addAttribute("print", "Xin chao ban");
+    // model.addAttribute("duck", "PTIT");
+    // return "hello";
+    // }
+
+    // MVC => , View <-> Controller ---Service ---Repository--- Model(entity)
 
     @GetMapping(value = "admin/user/create")
     public String getCreateUser(Model model) {
-        model.addAttribute("newUser", new User());
+        model.addAttribute("newUser", new User()); // null User
         return "admin/user/create";
     }
 
@@ -71,21 +73,22 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-    @RequestMapping("/admin/user")
+    @GetMapping("/admin/user")
     public String displayUsers(Model model, User user) {
         ArrayList<User> arr = this.userService.getAllUsers();
         model.addAttribute("users", arr);
         return "admin/user/show";
     }
 
+    // khong co post
     @GetMapping("/admin/user/update/{id}")
     public String updateUser(Model model, @PathVariable long id) {
         User currentUser = this.userService.getUserById(id);
         model.addAttribute("newUser", currentUser);
-        return "admin/user/update";
+        return "admin/user/update"; // front
     }
 
-    @GetMapping("/admin/user/update")
+    @PostMapping("/admin/user/update/29")
     public String getUpdateUser(Model model, @ModelAttribute("newUser") User user) {
         User currentUser = this.userService.getUserById(user.getId());
         if (currentUser != null) {
@@ -97,7 +100,7 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
-    @RequestMapping("/admin/user/{id}")
+    @GetMapping("/admin/user/{id}")
     public String getDetailUser(Model model, @PathVariable long id) {
         User user = this.userService.getUserById(id);
         model.addAttribute("id", id);
@@ -116,6 +119,18 @@ public class UserController {
 
     @PostMapping("/admin/user/delete")
     public String getDeleteUser(Model model, @ModelAttribute("newUser") User user) {
+        List<User> users = this.userService.getAllUsers();
+        int cnt = 0;
+        for (User x : users) {
+            if (x.getRole().equals("ADMIN")) {
+                ++cnt;
+            }
+        }
+        if (cnt <= 1) {
+
+            model.addAttribute("errorMessage", "Không thể Xóa ADMIN duy nhất");
+            return "client/auth/deny";
+        }
         this.userService.handleDeleteUser(user.getId());
         return "redirect:/admin/user";
     }

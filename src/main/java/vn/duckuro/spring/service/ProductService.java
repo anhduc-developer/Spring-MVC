@@ -56,6 +56,10 @@ public class ProductService {
         this.productRepository.deleteById(id);
     }
 
+    public void findProductById(long id) {
+        this.productRepository.deleteById(id);
+    }
+
     public void handleAddProductToCart(String email, long productID, HttpSession session) {
         User user = this.userService.getUserByEmail(email);
         if (user != null) {
@@ -63,7 +67,7 @@ public class ProductService {
             if (cart == null) {
                 Cart newCart = new Cart();
                 newCart.setUser(user);
-                newCart.setSum(1);
+                newCart.setSum(0);
                 cart = this.cartRepository.save(newCart);
                 user.setCart(newCart);
             }
@@ -107,7 +111,7 @@ public class ProductService {
                 session.setAttribute("sum", s);
                 this.cartRepository.save(currentCart);
             } else {
-                this.cartDetailRepository.deleteById(currentCart.getId());
+                currentCart.setSum(0);
                 session.setAttribute("sum", 0);
             }
         }
@@ -130,7 +134,6 @@ public class ProductService {
             this.cartRepository.save(cart);
             session.setAttribute("sum", totalQuantity);
         }
-
     }
 
     public void handlePlaceOrder(User user, HttpSession session, String receiverName, String receiverAddress,
@@ -166,7 +169,6 @@ public class ProductService {
                     orderDetailRepository.save(orderDetail);
                 }
                 this.cartDetailRepository.deleteAll(cartItems);
-
                 session.setAttribute("sum", 0);
             }
         }

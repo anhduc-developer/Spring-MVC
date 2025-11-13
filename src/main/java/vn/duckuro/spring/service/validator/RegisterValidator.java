@@ -32,6 +32,14 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
                     .disableDefaultConstraintViolation();
             valid = false;
         }
+        if (this.userService.checkPhoneExist(user.getPhone())) {
+            context.buildConstraintViolationWithTemplate(
+                    "Số Điện Thoại Đã Tồn Tại, Vui Lòng Sử Dụng Số Điện Thoại Khác")
+                    .addPropertyNode("phone")
+                    .addConstraintViolation()
+                    .disableDefaultConstraintViolation();
+            valid = false;
+        }
         return valid;
     }
 }

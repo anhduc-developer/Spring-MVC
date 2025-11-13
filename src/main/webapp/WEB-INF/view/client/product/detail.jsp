@@ -56,13 +56,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
             <div class="row g-4">
               <div class="col-lg-6">
                 <div class="border rounded">
-                  <a href="#">
-                    <img
-                      src="/images/product/${product.photo}"
-                      class="img-fluid rounded"
-                      alt="Image"
-                    />
-                  </a>
+                  <img
+                    src="/images/product/${product.photo}"
+                    class="img-fluid rounded"
+                    alt="Image"
+                  />
                 </div>
               </div>
               <div class="col-lg-6">
